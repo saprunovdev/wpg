@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  be:
+    build:
+      context: ./be
+      dockerfile: Dockerfile
+
+  fe:
+    build:
+      context: ./fe
+      dockerfile: Dockerfile
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - be
+      - fe
