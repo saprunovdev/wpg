@@ -6,14 +6,17 @@ function App() {
 	const [currentDateTime, setCurrentDateTime] = useState("");
 	const [randomNumber, setRandomNumber] = useState("");
 	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	const fetchData = async (url, setter) => {
+		setLoading(true);
 		try {
 			const response = await axios(url);
 			setter(response.data);
 		} catch (error) {
 			setError("Error fetching data: " + error.message);
 		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -40,6 +43,7 @@ function App() {
 					</div>
 				)}
 				<Card
+					loading={loading}
 					title="Random number service"
 					data={randomNumber}
 					action={getNumber}
@@ -47,6 +51,7 @@ function App() {
 				></Card>
 
 				<Card
+					loading={loading}
 					title="Current date service"
 					data={currentDateTime}
 					action={getDate}

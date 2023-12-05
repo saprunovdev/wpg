@@ -1,11 +1,15 @@
-export default function Card({ title, data, action, buttonText }) {
+export default function Card({ loading, title, data, action, buttonText }) {
 	return (
 		<div className="flex flex-col w-80 gap-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 			<h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 				{title}
 			</h5>
 
-			{data ? (
+			{loading && (
+				<p className="font-normal text-gray-700 dark:text-gray-400">Loading</p>
+			)}
+
+			{data && !loading ? (
 				<p className="font-normal text-gray-700 dark:text-gray-400">{data}</p>
 			) : (
 				<p className=" text-red-500"> Couldn't fetch data from server</p>
