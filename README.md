@@ -35,3 +35,9 @@ git clone https://github.com/saprunovdev/wpg.git
 cd wpg
 docker-compose up
 ```
+
+On mac run docker-compose up again, after you get an error
+
+```
+docker-compose up
+```
