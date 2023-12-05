@@ -1,61 +1,22 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Card from "./Card";
 
 function App() {
-	const [currentDateTime, setCurrentDateTime] = useState("");
-	const [randomNumber, setRandomNumber] = useState("");
-	const [error, setError] = useState("");
-	const [loading, setLoading] = useState(false);
-
-	const fetchData = async (url, setter) => {
-		setLoading(true);
-		try {
-			const response = await axios(url);
-			setter(response.data);
-		} catch (error) {
-			setError("Error fetching data: " + error.message);
-		} finally {
-			setLoading(false);
-		}
-	};
-
-	const getDate = () => {
-		fetchData("http://localhost/api/current-datetime", setCurrentDateTime);
-	};
-
-	const getNumber = () => {
-		fetchData("http://localhost/api/number-service", setRandomNumber);
-	};
-
-	useEffect(() => {
-		getDate();
-		getNumber();
-	}, []);
+	const dateTimeAPI = "http://localhost/api/current-datetime";
+	const randomNumberAPI = "http://localhost/api/number-service";
 
 	return (
 		<div className="App">
 			<div className=" flex flex-col items-center mx-auto container p-8 gap-8">
-				{error && (
-					<div className="text-red-500  flex-1 text-center">
-						<p className="error">{error}</p>
-						<p>Run backend service</p>
-					</div>
-				)}
 				<Card
-					loading={loading}
 					title="Random number service"
-					data={randomNumber}
-					action={getNumber}
-					buttonText="Get number"
+					buttonText="Get random number"
+					url={randomNumberAPI}
 				></Card>
 
 				<Card
-					loading={loading}
 					title="Current date service"
-					data={currentDateTime}
-					action={getDate}
 					buttonText="Get current date"
+					url={dateTimeAPI}
 				></Card>
 			</div>
 		</div>
