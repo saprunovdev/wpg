@@ -1,11 +1,37 @@
-# This is test project for WPG
+![WPG Test Project](WPG_Test_Project.png)
 
-## For mac
+# Software Developer Test
 
-alpine images are not working on mac
+##Project Description
 
-docker build -t be be/ --platform linux/amd64
+![WPG Project Structure](WPG_project_structure.png)
 
-## For linux and Windows
+This is simple full-stack application featuring a React frontend and a Spring backend, containerized using Docker with a simple reverse proxy server on NGINX.
 
+####Server Configuration:
+
+- NGINX listens for incoming connections on port 80, so it can be accessed on `http://localhost`
+- Requests for path `localhost/` are routed to the frontend service
+- Requests for path `localhost/api/` are routed to backend service
+- `localhost/api/date-service` returns the current datetime for Seoul
+- `localhost/api/number-service` returns a random number
+- Frontend listens on `localhost:3000`
+- Backend listens on `localhost:8080`
+
+## Requirements
+
+You need to install:
+
+1. [Git](https://git-scm.com/downloads)
+2. [Docker](https://docs.docker.com/get-docker/)
+3. [Docker compose](https://docs.docker.com/compose/install/)
+
+then just open your terminal and run these commands:
+
+### Works on Linux, Mac or Windows
+
+```
+git clone https://github.com/saprunovdev/wpg.git
+cd wpg
 docker-compose up
+```
