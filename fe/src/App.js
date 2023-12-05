@@ -38,8 +38,8 @@ function App() {
 			<h2>{randomNumber}</h2>
 			{loading ? <p>loading</p> : <p>not loading</p>}
 			{error && <p className="error">{error}</p>}
-			<button onClick={getDate}>Get date</button>
-			<button onClick={getNumber}>Get random number</button>
+			<button onClick={getDate}>Get current date</button>
+			<button onClick={getNumber}>Get number</button>
 		</div>
 	);
 }
