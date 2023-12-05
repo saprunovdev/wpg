@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Card from "./Card";
 
 function App() {
 	const [currentDateTime, setCurrentDateTime] = useState("");
@@ -34,12 +35,28 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1>{currentDateTime}</h1>
-			<h2>{randomNumber}</h2>
-			{loading ? <p>loading</p> : <p>not loading</p>}
-			{error && <p className="error">{error}</p>}
-			<button onClick={getDate}>Get current date</button>
-			<button onClick={getNumber}>Get number</button>
+			<div className=" flex flex-col items-center mx-auto container p-8 gap-8">
+				{loading ? <h1>loading</h1> : <></>}
+				{error && !loading && (
+					<div className="text-red-500  flex-1 text-center">
+						<p className="error">{error}</p>
+						<p>Run backend service</p>
+					</div>
+				)}
+				<Card
+					title="Random number service"
+					data={randomNumber}
+					action={getNumber}
+					buttonText="Get number"
+				></Card>
+
+				<Card
+					title="Current date service"
+					data={currentDateTime}
+					action={getDate}
+					buttonText="Get current date"
+				></Card>
+			</div>
 		</div>
 	);
 }
