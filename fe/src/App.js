@@ -6,17 +6,14 @@ function App() {
 	const [currentDateTime, setCurrentDateTime] = useState("");
 	const [randomNumber, setRandomNumber] = useState("");
 	const [error, setError] = useState("");
-	const [loading, setLoading] = useState(false);
 
 	const fetchData = async (url, setter) => {
-		setLoading(true);
 		try {
 			const response = await axios(url);
 			setter(response.data);
 		} catch (error) {
 			setError("Error fetching data: " + error.message);
 		} finally {
-			setLoading(false);
 		}
 	};
 
@@ -36,8 +33,7 @@ function App() {
 	return (
 		<div className="App">
 			<div className=" flex flex-col items-center mx-auto container p-8 gap-8">
-				{loading ? <h1>loading</h1> : <></>}
-				{error && !loading && (
+				{error && (
 					<div className="text-red-500  flex-1 text-center">
 						<p className="error">{error}</p>
 						<p>Run backend service</p>
