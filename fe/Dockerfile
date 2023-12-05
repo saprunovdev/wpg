@@ -6,6 +6,6 @@ RUN npm install
 COPY . ./
 RUN npm run build
 
-# Stage 2: Serve the app using serve package
+# Stage 2: Run the server
 
 CMD ["npm", "start"]
