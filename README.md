@@ -2,13 +2,13 @@
 
 # Software Developer Test
 
-##Project Description
+## Project Description
 
 ![WPG Project Structure](WPG_project_structure.png)
 
 This is simple full-stack application featuring a React frontend and a Spring backend, containerized using Docker with a simple reverse proxy server on NGINX.
 
-####Server Configuration:
+#### Server Configuration:
 
 - NGINX listens for incoming connections on port 80, so it can be accessed on `http://localhost`
 - Requests for path `localhost/` are routed to the frontend service
