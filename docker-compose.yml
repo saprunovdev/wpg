@@ -1,13 +1,18 @@
 version: "3.8"
 services:
-  be:
+  number-service:
     build:
-      context: ./be
+      context: ./number-service
       dockerfile: Dockerfile
 
-  fe:
+  date-service:
     build:
-      context: ./fe
+      context: ./date-service
+      dockerfile: Dockerfile
+
+  frontend:
+    build:
+      context: ./frontend
       dockerfile: Dockerfile
 
   nginx:
@@ -17,5 +22,6 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - be
-      - fe
+      - number-service
+      - date-service
+      - frontend
