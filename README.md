@@ -16,7 +16,7 @@ This is simple full-stack application featuring a React frontend and a Spring ba
 - `localhost/api/date-service` returns the current datetime for Seoul
 - `localhost/api/number-service` returns a random number
 - Frontend listens on `localhost:3000`
-- Backend listens on `localhost:8080`
+- Number service is listening on `localhost:8080` and date service is listening on `localhost:8081`
 
 ## Requirements
 
